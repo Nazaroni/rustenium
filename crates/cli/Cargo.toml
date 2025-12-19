@@ -1,0 +1,12 @@
+[package]
+name = "rustenium-cli"
+version = "0.1.0"
+edition = "2021"
+authors = ["Nazar Malyy <nazar@malyy.net>"]
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+rustenium-core = { path = "../core" }
+rustenium-web = { path = "../web" }
+rustenium-mobile = { path = "../mobile" }
+rustenium-bdd = { path = "../bdd" }

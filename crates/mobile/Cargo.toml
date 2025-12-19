@@ -1,0 +1,11 @@
+[package]
+name = "rustenium-mobile"
+version = "0.1.0"
+edition = "2021"
+authors = ["Nazar Malyy <nazar@malyy.net>"]
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+rustenium-core = { path = "../core" }
+rustenium-android = { path = "../android" }
+rustenium-ios = { path = "../ios" }

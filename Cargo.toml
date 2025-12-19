@@ -1,0 +1,15 @@
+[workspace]
+members = [
+    "crates/core",
+    "crates/bdd",
+    "crates/assertions",
+    "crates/reporter",
+    "crates/cli",
+    "crates/web",
+    "crates/mobile",
+    "crates/ios",
+    "crates/android",
+]
+
+[workspace.dependencies]
+# Add shared dependencies here
