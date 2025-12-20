@@ -1,1 +1,4 @@
-// Core logic for WebDriver interactions, capabilities, etc.
+pub mod client;
+pub mod capabilities;
+pub mod session;
+pub mod common;
