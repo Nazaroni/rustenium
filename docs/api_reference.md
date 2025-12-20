@@ -15,7 +15,8 @@
 ### rustenium::mobile
 
 - `IosCapabilities`, `AndroidCapabilities`: Mobile session capabilities
-- `create_ios_session`, `create_android_session`: Start mobile sessions (Appium)
+- `create_ios_session`, `create_android_session`: Start mobile sessions
+  (Rustenium-mobile)
 
 ### rustenium::common
 

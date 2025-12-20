@@ -1,7 +1,8 @@
 <div align="center">
   <h1>🦀 Rustenium 🦀</h1>
   <p>
-    <strong>A Rust-native, async-first, multicore end-to-end automation framework for Web, Android, and iOS.</strong>
+    <strong>A Rust-native, async-first, multicore end-to-end automation framework
+    for Web, Android, and iOS.</strong>
   </p>
   <p>
     <a href="https://github.com/user/rustenium/actions/workflows/ci.yml">
@@ -18,27 +19,35 @@
 
 ---
 
-**Rustenium** is inspired by Selenium and Appium, but completely rewritten in Rust to provide a unified, high-performance, and type-safe API for browser and mobile automation. It comes with its own BDD test runner, assertion library, and reporting tools, offering a complete end-to-end testing solution.
+**Rustenium** is inspired by Selenium, but completely rewritten in Rust to
+provide a unified, high-performance, and type-safe API for browser and mobile
+automation. It comes with its own BDD test runner, assertion library, and
+reporting tools, offering a complete end-to-end testing solution.
 
 ## ✨ Key Features
 
-- ⚡️ **Async-First & Multicore:** Built from the ground up with `async` to run tests in parallel, leveraging multiple cores for maximum speed.
-- 🌐 **Web Automation:** Drives modern browsers like Chrome, Firefox, and Safari using the W3C WebDriver standard.
-- 📱 **Mobile Automation:** Supports both Android (via UiAutomator2) and iOS (via XCUITest) for native and hybrid app testing.
+- ⚡️ **Async-First & Multicore:** Built from the ground up with `async` to run
+  tests in parallel, leveraging multiple cores for maximum speed.
+- 🌐 **Web Automation:** Drives modern browsers like Chrome, Firefox, and Safari
+  using the W3C WebDriver standard.
+- 📱 **Mobile Automation:** Supports both Android (via UiAutomator2) and iOS
+  (via XCUITest) for native and hybrid app testing.
 - 🧩 **Complete Toolchain:**
   - **BDD Runner:** Write tests in Gherkin syntax.
   - **Assertion Library:** Fluent and expressive assertions.
   - **Reporter:** Generate beautiful, detailed test reports.
-- 🔒 **Type-Safe API:** Catch errors at compile time, not runtime, thanks to Rust's powerful type system.
+- 🔒 **Type-Safe API:** Catch errors at compile time, not runtime, thanks to
+  Rust's powerful type system.
 
 ## 🚀 Getting Started
 
 ### 1. Prerequisites
 
-Ensure you have the necessary drivers installed and available in your system's `PATH`.
+Ensure you have the necessary drivers installed and available in your system's
+`PATH`.
 
 - **For Web:** `chromedriver`, `geckodriver`, etc.
-- **For Mobile:** A working Appium or Appium 2 setup.
+- **For Mobile:** A working Rustenium-mobile setup.
 
 Our helper scripts in the `/scripts` directory can assist you.
 
@@ -56,7 +65,8 @@ rustenium-mobile = "0.1.0"
 
 ### 3. Write Your First Test
 
-Check out the examples in the `📁 examples/` directory to see how to write tests for web, Android, and iOS.
+Check out the examples in the `📁 examples/` directory to see how to write
+tests for web, Android, and iOS.
 
 ```rust
 // Example web test (see examples/ for more)
@@ -78,7 +88,8 @@ async fn my_web_test() {
 This project is a Cargo workspace, making it modular and scalable.
 
 - `📁 crates/`: Home to all the individual packages (crates).
-  - `⚙️ core/`: Shared logic, traits, and WebDriver/Appium protocol implementation.
+  - `⚙️ core/`: Shared logic, traits, and WebDriver/Rustenium-mobile protocol
+    implementation.
   - `🌐 web/`: Web browser automation features.
   - `📱 mobile/`: Unified API for mobile automation.
   - `🍎 ios/`: iOS-specific implementation.
@@ -98,9 +109,11 @@ This project is a Cargo workspace, making it modular and scalable.
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) to get started.
+Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md)
+to get started.
 
 ## 📜 License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md)
+file for details.
 
