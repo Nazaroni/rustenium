@@ -29,4 +29,3 @@ See `docs/examples/` for code snippets and walkthroughs for web, mobile, and ext
 ## Contributing
 
 - Pull requests and issues welcome!
-- See `rustenium_project_plan.md` for roadmap.
