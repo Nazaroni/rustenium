@@ -1,3 +1,7 @@
+> 🚧 **WARNING: Rustenium is under active development and not yet production-ready.**
+>
+> Expect breaking changes, incomplete features, and unstable behavior. **Do not use this project in production systems yet.**
+
 <div align="center">
   <h1>🦀 Rustenium 🦀</h1>
   <p>
@@ -103,4 +107,3 @@ Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md)
 ## 📜 License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
-
