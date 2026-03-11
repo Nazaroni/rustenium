@@ -34,3 +34,4 @@ or generated Rust docs.
 ## Contributing
 
 We welcome contributions! Please see [CONTRIBUTING.md](../CONTRIBUTING.md) for guidelines.
+- Pull requests and issues welcome!
