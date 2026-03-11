@@ -1,1 +1,1 @@
-// Mobile automation implementation (Appium-like)
+// Mobile automation implementation (Rustenium-mobile)

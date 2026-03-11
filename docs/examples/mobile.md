@@ -32,5 +32,5 @@ async fn main() {
 
 > **Note:**
 >
-> - Appium server must be running and accessible at the given URL.
+> - Rustenium-mobile server must be running and accessible at the given URL.
 > - The device/emulator and app paths must be correct.
