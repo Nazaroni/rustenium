@@ -9,8 +9,8 @@ pub use browser::{Browser, BrowserCapabilities, ChromeCapabilities, ChromeOption
 pub use browser::{FirefoxCapabilities, FirefoxOptions};
 pub use browser::{SafariCapabilities, SafariOptions};
 pub use browser::{EdgeCapabilities, EdgeOptions};
+pub use launcher::DriverLauncher;
 use element::WebElement;
-use launcher::DriverLauncher;
 use std::time::Duration;
 
 /// Configuration for WebDriver instance
@@ -65,8 +65,13 @@ impl WebDriver {
     /// Create a new WebDriver instance with the given config
     pub async fn new(config: &WebDriverConfig) -> WebDriverResult<Self> {
         let client = WebDriverHttpClient::new(&config.base_url);
-        let capabilities = ChromeCapabilities::new().headless();
-        let session = WebDriverSession::create(client, capabilities.to_value()).await?;
+        // Create capabilities with headless mode
+        let mut chrome_caps = ChromeCapabilities::new();
+        chrome_caps.chrome_options.arguments = vec![
+            "--headless=new".to_string(),
+            "--no-sandbox".to_string()
+        ];
+        let session = WebDriverSession::create(client, chrome_caps.to_value()).await?;
         Ok(Self {
             session,
             _driver_process: None,
@@ -163,23 +168,24 @@ impl WebDriver {
         let endpoint = format!("/session/{}/elements", self.session.session_id);
         let params = serde_json::json!({ "using": "css selector", "value": selector });
         let response: serde_json::Value = self.session.client.post(&endpoint, &params).await?;
-        let elements = match response["value"].as_array() {
-            Some(arr) => arr,
-            None => &[],
-        };
-        Ok(elements
-            .iter()
-            .map(|e| {
-                let id = e["element-6066-11e4-a52e-4f735466cecf"]
-                    .as_str()
-                    .unwrap_or("")
-                    .to_string();
-                WebElement {
-                    element_id: id,
-                    session: self.session.clone(),
-                }
+        let elements: Vec<WebElement> = response["value"]
+            .as_array()
+            .map(|arr| {
+                arr.iter()
+                    .map(|e| {
+                        let id = e["element-6066-11e4-a52e-4f735466cecf"]
+                            .as_str()
+                            .unwrap_or("")
+                            .to_string();
+                        WebElement {
+                            element_id: id,
+                            session: self.session.clone(),
+                        }
+                    })
+                    .collect()
             })
-            .collect())
+            .unwrap_or_default();
+        Ok(elements)
     }
 
     /// Quit the browser and end the session
@@ -192,6 +198,11 @@ impl WebDriver {
         let endpoint = format!("/session/{}/screenshot", self.session.session_id);
         let response: serde_json::Value = self.session.client.get(&endpoint).await?;
         Ok(response["value"].as_str().unwrap_or("").to_string())
+    }
+
+    /// Get the session ID
+    pub fn session_id(&self) -> &str {
+        &self.session.session_id
     }
 
     /// Wait for an element to be present in the DOM

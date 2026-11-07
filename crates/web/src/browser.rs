@@ -73,6 +73,15 @@ impl Default for ChromeCapabilities {
     }
 }
 
+impl Capabilities for ChromeCapabilities {
+    fn to_value(&self) -> Value {
+        json!({
+            "browserName": "chrome",
+            "goog:chromeOptions": self.chrome_options
+        })
+    }
+}
+
 impl ChromeCapabilities {
     /// Create new Chrome capabilities with default options
     pub fn new() -> Self {
@@ -112,6 +121,15 @@ pub struct FirefoxCapabilities {
 impl Default for FirefoxCapabilities {
     fn default() -> Self {
         Self::new()
+    }
+}
+
+impl Capabilities for FirefoxCapabilities {
+    fn to_value(&self) -> Value {
+        json!({
+            "browserName": "firefox",
+            "moz:firefoxOptions": self.firefox_options
+        })
     }
 }
 
@@ -193,6 +211,15 @@ impl Default for SafariCapabilities {
     }
 }
 
+impl Capabilities for SafariCapabilities {
+    fn to_value(&self) -> Value {
+        json!({
+            "browserName": "safari",
+            "safari:options": self.safari_options
+        })
+    }
+}
+
 impl SafariCapabilities {
     /// Create new Safari capabilities with default options
     pub fn new() -> Self {
@@ -231,6 +258,15 @@ pub struct EdgeCapabilities {
 impl Default for EdgeCapabilities {
     fn default() -> Self {
         Self::new()
+    }
+}
+
+impl Capabilities for EdgeCapabilities {
+    fn to_value(&self) -> Value {
+        json!({
+            "browserName": "edge",
+            "ms:edgeOptions": self.edge_options
+        })
     }
 }
 
@@ -287,6 +323,29 @@ pub enum BrowserCapabilities {
     Edge(EdgeCapabilities),
 }
 
+impl Capabilities for BrowserCapabilities {
+    fn to_value(&self) -> Value {
+        match self {
+            BrowserCapabilities::Chrome(caps) => json!({
+                "browserName": "chrome",
+                "goog:chromeOptions": caps.chrome_options
+            }),
+            BrowserCapabilities::Firefox(caps) => json!({
+                "browserName": "firefox",
+                "moz:firefoxOptions": caps.firefox_options
+            }),
+            BrowserCapabilities::Safari(caps) => json!({
+                "browserName": "safari",
+                "safari: safariOptions": caps.safari_options
+            }),
+            BrowserCapabilities::Edge(caps) => json!({
+                "browserName": "edge",
+                "ms:edgeOptions": caps.edge_options
+            }),
+        }
+    }
+}
+
 impl BrowserCapabilities {
     /// Convert capabilities to JSON value (for compatibility)
     pub fn to_value(&self) -> Value {
@@ -320,28 +379,5 @@ impl BrowserCapabilities {
             }
         }
         self
-    }
-}
-
-impl Capabilities for BrowserCapabilities {
-    fn to_value(&self) -> Value {
-        match self {
-            BrowserCapabilities::Chrome(caps) => json!({
-                "browserName": "chrome",
-                "goog:chromeOptions": caps.chrome_options
-            }),
-            BrowserCapabilities::Firefox(caps) => json!({
-                "browserName": "firefox",
-                "moz:firefoxOptions": caps.firefox_options
-            }),
-            BrowserCapabilities::Safari(caps) => json!({
-                "browserName": "safari",
-                "safari: safariOptions": caps.safari_options
-            }),
-            BrowserCapabilities::Edge(caps) => json!({
-                "browserName": "edge",
-                "ms:edgeOptions": caps.edge_options
-            }),
-        }
     }
 }

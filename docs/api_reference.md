@@ -9,8 +9,28 @@
 
 ### rustenium::web
 
-- `WebElement`: Find, click, send_keys, get_text
-- `BrowserCapabilities`: Chrome, Firefox
+- `WebDriver`: High-level browser automation driver
+  - `new()`, `new_chrome()`, `new_firefox()`: Create new driver instances
+  - `goto(url)`, `back()`, `forward()`, `refresh()`: Navigation
+  - `title()`, `url()`, `html()`: Page state
+  - `find_element(selector)`, `find_elements(selector)`: Element location
+  - `wait_for_element(selector, timeout)`: Wait for elements
+  - `quit()`: Close browser session
+
+- `WebElement`: Represented Web Elements
+  - `click()`, `send_keys(text)`, `text()`: Interaction
+  - `attribute(name)`, `property(name)`: Get attributes/properties
+  - `rect()`: Get element position and size
+  - `is_displayed()`, `is_enabled()`, `is_selected()`: Element state
+
+- `WebDriverConfig`: Driver configuration
+  - `base_url`, `port`, `headless`: Configuration options
+
+- `ChromeOptions`, `FirefoxOptions`: Browser-specific options
+  - `headless()`, `with_arguments(args)`: Option setting
+
+- `ChromeCapabilities`, `FirefoxCapabilities`: Browser capabilities
+  - `to_value()`: Convert to JSON value
 
 ### rustenium::mobile
 
