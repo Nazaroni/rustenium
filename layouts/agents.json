@@ -1,0 +1,14 @@
+{
+  "name": "agents-layout",
+  "blocks": [
+    {
+      "type": "panel",
+      "title": "Agents Overview",
+      "content": {
+        "type": "mod",
+        "mod": "agents_cards",
+        "props": {}
+      }
+    }
+  ]
+}

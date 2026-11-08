@@ -12,3 +12,19 @@ serde_json = "1.0"
 async-trait = "0.1"
 thiserror = "1.0"
 tokio = { version = "1.0", features = ["full"] }
+
+[[example]]
+name = "web_basic"
+path = "../../examples/web_basic.rs"
+
+[[example]]
+name = "web_google"
+path = "../../examples/web_google.rs"
+
+[[example]]
+name = "web_element_attributes"
+path = "../../examples/web_element_attributes.rs"
+
+[[example]]
+name = "web_waits"
+path = "../../examples/web_waits.rs"
